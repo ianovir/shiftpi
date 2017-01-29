@@ -93,7 +93,18 @@ def digitalWrite(pin, mode):
 
         _setPin(pin, mode)
     _execute()
-
+	
+def digitalWriteBundle(pinslist=[]):
+    '''
+    Allows the user to set the states of all pins on the register by using a single list.
+	The position of each element in the list represents the pin number, while its value represents the mode of the pin (HIGH or LOW).
+    '''
+    i = 1
+    for pinMode in pinslist:
+        _setPin(i, pinMode)
+        i+=1        
+    _execute()
+	
 def delay(millis):
     '''
     Used for creating a delay between commands
